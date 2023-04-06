@@ -1,15 +1,24 @@
 import { legacy_createStore } from "redux";
 
-const reducer = (state = 1, action) => {
+const reducer = (state = [], action) => {
 	switch (action.type) {
-		case 'INC': {
-			return state + 1
+		case 'ADD_TODO': {
+			return [
+				...state,
+				{
+					id: Date.now() + Math.random(),
+					title: action.title,
+					completed: false
+				}
+			]
 		}
-		case 'DEC': {
-			return state - 1
+		case 'DELETE_TODO': {
+			return state.filter(e => e.id !== action.id)
 		}
-		case 'RESET': {
-			return 0
+		case 'TOGGLE_TODO': {
+			return state.map(e => e.id === action.id
+				? { ...e, completed: !e.completed } 
+				: e)
 		}
 		default: {
 			return state
@@ -19,14 +28,17 @@ const reducer = (state = 1, action) => {
 
 export const store = legacy_createStore(reducer)
 
-export const inc = {
-	type: 'INC'
-}
+export const addTodo = (title) => ({
+	type: 'ADD_TODO',
+	title
+})
 
-export const dec = {
-	type: 'DEC'
-}
+export const deleteTodo = (id) => ({
+	type: 'DELETE_TODO',
+	id
+})
 
-export const reset = {
-	type: 'RESET'
-}
+export const toggleTodo = (id) => ({
+	type: 'TOGGLE_TODO',
+	id
+})
