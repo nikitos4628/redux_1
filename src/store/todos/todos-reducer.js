@@ -1,4 +1,4 @@
-import { TOGGLE_TODO, ADD_TODO, REMOVE_TODO } from './todos-const';
+import { TOGGLE_TODO, ADD_TODO, REMOVE_TODO } from './todos-consts';
 
 
 export const todos = (state = [], action) => {
