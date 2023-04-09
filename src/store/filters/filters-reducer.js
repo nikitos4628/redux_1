@@ -5,7 +5,8 @@ export const filters = (state = 'all', action) => {
       case SET_FILTER: {
 			return action.filter;
 		}
-      default:
+      default: {
          return state;
+		}
    }
 }

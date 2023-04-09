@@ -5,5 +5,5 @@ import {rootReducer} from './root-reducer';
 // export const store = legacy_createStore(rootReducer);
 
 export const cofigureStore = () => {
-  return legacy_createStore(rootReducer);
+  return legacy_createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 }
