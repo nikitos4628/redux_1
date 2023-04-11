@@ -1,6 +1,6 @@
-export const selectAllTodos = (state) => state.todos;
+// export const selectAllTodos = (state) => state.todos;
 
-export const selectActiveTodos = (state) => state.todos.filter(todo => todo.completed === false);
+// export const selectActiveTodos = (state) => state.todos.filter(todo => todo.completed === false);
 
 export const selectVisibleTodos = (state, filter) => {
 	switch (filter) {
